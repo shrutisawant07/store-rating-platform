@@ -55,6 +55,7 @@ function AdminDashboard() {
 
     const [showUserForm, setShowUserForm] = useState(false);
     const [showStoreForm, setShowStoreForm] = useState(false);
+    const [activeSection, setActiveSection] = useState("home");
 
     // ==========================================
     // ADD USER FORM
@@ -380,7 +381,38 @@ function AdminDashboard() {
             </header>
 
 
-            <main className="dashboard-container">
+            <div className="admin-layout">
+
+                {/* Sidebar */}
+
+                <aside className="admin-sidebar">
+
+                    <h2>Admin</h2>
+
+                    <button
+                        className={activeSection === "home" ? "active" : ""}
+                        onClick={() => setActiveSection("home")}
+                    >
+                        🏠 Home
+                    </button>
+
+                    <button
+                        className={activeSection === "users" ? "active" : ""}
+                        onClick={() => setActiveSection("users")}
+                    >
+                        👥 Users
+                    </button>
+
+                    <button
+                        className={activeSection === "stores" ? "active" : ""}
+                        onClick={() => setActiveSection("stores")}
+                    >
+                        🏪 Stores
+                    </button>
+
+                </aside>
+
+                <main className="dashboard-container">
 
                 {/* ERROR */}
 
@@ -395,7 +427,8 @@ function AdminDashboard() {
                     STATISTICS
                 ================================== */}
 
-                <div className="stats-grid">
+                {activeSection === "home" && (
+                    <div className="stats-grid">
 
                     <div className="stat-card">
 
@@ -435,41 +468,50 @@ function AdminDashboard() {
 
                     </div>
 
-                </div>
+                    </div>
+                )}
 
 
                 {/* ==================================
                     ADD BUTTONS
                 ================================== */}
 
-                <div className="action-buttons">
+                {activeSection === "users" && (
+                    <div className="action-buttons">
 
-                    <button
-                        onClick={() => {
-                            setShowUserForm(!showUserForm);
-                            setShowStoreForm(false);
-                        }}
-                    >
-                        Add User
-                    </button>
+                        <button
+                            onClick={() => {
+                                setShowUserForm(!showUserForm);
+                                setShowStoreForm(false);
+                            }}
+                        >
+                            Add User
+                        </button>
 
-                    <button
-                        onClick={() => {
-                            setShowStoreForm(!showStoreForm);
-                            setShowUserForm(false);
-                        }}
-                    >
-                        Add Store
-                    </button>
+                    </div>
+                )}
 
-                </div>
+                {activeSection === "stores" && (
+                    <div className="action-buttons">
+
+                        <button
+                            onClick={() => {
+                                setShowStoreForm(!showStoreForm);
+                                setShowUserForm(false);
+                            }}
+                        >
+                            Add Store
+                        </button>
+
+                    </div>
+                )}
 
 
                 {/* ==================================
                     ADD USER FORM
                 ================================== */}
 
-                {showUserForm && (
+                {activeSection === "users" && showUserForm && (
 
                     <form
                         className="admin-form"
@@ -563,7 +605,7 @@ function AdminDashboard() {
                     ADD STORE FORM
                 ================================== */}
 
-                {showStoreForm && (
+                {activeSection === "stores" && showStoreForm && (
 
                     <form
                         className="admin-form"
@@ -633,7 +675,8 @@ function AdminDashboard() {
                     USERS SECTION
                 ================================== */}
 
-                <section className="admin-section">
+                {activeSection === "users" && (
+                    <section className="admin-section">
 
                     <div className="section-header">
 
@@ -883,14 +926,16 @@ function AdminDashboard() {
 
                     </div>
 
-                </section>
+                    </section>
+                )}
 
 
                 {/* ==================================
                     STORES SECTION
                 ================================== */}
 
-                <section className="admin-section">
+                {activeSection === "stores" && (
+                    <section className="admin-section">
 
                     <div className="section-header">
 
@@ -1096,9 +1141,12 @@ function AdminDashboard() {
 
                     </div>
 
-                </section>
+                    </section>
+                )}
 
             </main>
+
+            </div>
 
         </div>
     );
