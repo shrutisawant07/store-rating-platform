@@ -445,22 +445,19 @@ function AdminDashboard() {
                 <div className="action-buttons">
 
                     <button
-                        onClick={() =>
-                            setShowUserForm(
-                                !showUserForm
-                            )
-                        }
+                        onClick={() => {
+                            setShowUserForm(!showUserForm);
+                            setShowStoreForm(false);
+                        }}
                     >
                         Add User
                     </button>
 
-
                     <button
-                        onClick={() =>
-                            setShowStoreForm(
-                                !showStoreForm
-                            )
-                        }
+                        onClick={() => {
+                            setShowStoreForm(!showStoreForm);
+                            setShowUserForm(false);
+                        }}
                     >
                         Add Store
                     </button>
