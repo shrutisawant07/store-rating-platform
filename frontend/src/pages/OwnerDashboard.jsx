@@ -9,6 +9,7 @@ function OwnerDashboard() {
     const [dashboard, setDashboard] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState("");
+    const [showChangePassword, setShowChangePassword] = useState(false);
 
     const fetchDashboard = async () => {
         try {
@@ -61,13 +62,34 @@ function OwnerDashboard() {
                     </p>
                 </div>
 
-                <button onClick={handleLogout}>
-                    Logout
-                </button>
+                <div className="header-actions">
+
+                    <button
+                        onClick={() =>
+                            setShowChangePassword(
+                                !showChangePassword
+                            )
+                        }
+                    >
+                        Change Password
+                    </button>
+
+                    <button onClick={handleLogout}>
+                        Logout
+                    </button>
+
+                </div>
 
             </header>
 
-            <ChangePassword />
+
+            {/* Change Password */}
+
+            {showChangePassword && (
+                <ChangePassword />
+            )}
+
+
             <main className="dashboard-container">
 
                 {error && (

@@ -12,6 +12,7 @@ function UserDashboard() {
 
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState("");
+    const [showChangePassword, setShowChangePassword] = useState(false);
 
     // Rating modal
     const [selectedStore, setSelectedStore] = useState(null);
@@ -76,7 +77,9 @@ function UserDashboard() {
     // Submit or update rating
     const handleRatingSubmit = async () => {
         if (selectedRating < 1 || selectedRating > 5) {
-            setRatingError("Please select a rating between 1 and 5");
+            setRatingError(
+                "Please select a rating between 1 and 5"
+            );
             return;
         }
 
@@ -142,12 +145,33 @@ function UserDashboard() {
                     </p>
                 </div>
 
-                <button onClick={handleLogout}>
-                    Logout
-                </button>
+                <div className="header-actions">
+
+                    <button
+                        onClick={() =>
+                            setShowChangePassword(
+                                !showChangePassword
+                            )
+                        }
+                    >
+                        Change Password
+                    </button>
+
+                    <button onClick={handleLogout}>
+                        Logout
+                    </button>
+
+                </div>
 
             </header>
-            <ChangePassword />
+
+
+            {/* Change Password */}
+
+            {showChangePassword && (
+                <ChangePassword />
+            )}
+
 
             {/* Main Content */}
 
@@ -157,8 +181,6 @@ function UserDashboard() {
 
 
                 {/* Search */}
-                
-                
 
                 <form
                     onSubmit={handleSearch}
@@ -188,7 +210,6 @@ function UserDashboard() {
                     </button>
 
                 </form>
-                
 
 
                 {/* Error */}
@@ -281,6 +302,7 @@ function UserDashboard() {
                     </div>
 
                 )}
+
 
             </main>
 
