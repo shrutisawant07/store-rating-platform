@@ -24,13 +24,13 @@ A full-stack web application for managing stores and their ratings with role-bas
 
 ---
 
-## 🛠️ Tech Stack
+# 🛠️ Tech Stack
 
-**Frontend:** React.js, Vite, Axios, React Router
-**Backend:** Node.js, Express.js, Sequelize
-**Database:** TiDB Cloud (MySQL-compatible)
-**Authentication:** JWT
-**Deployment:** Vercel, Render, TiDB Cloud
+**Frontend:** React.js, Vite, Axios, React Router  
+**Backend:** Node.js, Express.js, Sequelize  
+**Database:** TiDB Cloud (MySQL-compatible)  
+**Authentication:** JWT  
+**Deployment:** Vercel, Render, TiDB Cloud  
 
 ---
 
