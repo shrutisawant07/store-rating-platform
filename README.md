@@ -4,12 +4,12 @@ A full-stack web application for managing stores and their ratings with role-bas
 
 ## 🚀 Live Demo
 
-**Frontend:**
-store-rating-platform-indol.vercel.app
 
-**Backend API:**
-https://store-rating-platform-l5z.onrender.com/api
----
+**Frontend:**  
+[https://store-rating-platform-indol.vercel.app](https://store-rating-platform-indol.vercel.app)
+
+**Backend API:**  
+[https://store-rating-platform-l5z.onrender.com/api](https://store-rating-platform-l5z.onrender.com/api)
 
 ## ✨ Key Features
 
