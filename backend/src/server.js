@@ -12,7 +12,17 @@ const ownerRoutes = require("./routes/ownerRoutes");
 const app = express();
 
 // Middleware
-app.use(cors());
+const corsOptions = {
+    origin: [
+        "http://localhost:5173",
+        "https://store-rating-platform-indol.vercel.app"
+    ],
+    methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+    credentials: true
+};
+
+app.use(cors(corsOptions));
 app.use(express.json());
 
 // Routes
@@ -21,8 +31,6 @@ app.use("/api/admin", adminRoutes);
 app.use("/api/stores", storeRoutes);
 app.use("/api/ratings", ratingRoutes);
 app.use("/api/owner", ownerRoutes);
-
-
 
 // Home route
 app.get("/", (req, res) => {
@@ -33,6 +41,6 @@ app.get("/", (req, res) => {
 
 const PORT = process.env.PORT || 5000;
 
-app.listen(PORT, () => {
+app.listen(PORT, "0.0.0.0", () => {
     console.log(`Server running on port ${PORT}`);
 });
